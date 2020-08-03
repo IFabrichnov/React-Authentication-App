@@ -60,8 +60,8 @@ module.exports = {
 
 Приложение имеет следующие маршруты:
 1) Домашняя страница (/)
-2) Роут логина (/login)
-3) Роут регистрации (/register)
+2) Страница логина (/login)
+3) Страница регистрации (/register)
 4) Страница отправки сообщений (/quotes)
 
 Создаю файл **auth.js** в котором находятся все роуты и рендеринг страниц.
@@ -262,19 +262,17 @@ module.exports = model('User', schema);
 Приложение написано с помощью **React**.
 
 Тут я помещаю в локальный стейт текущего пользователя, который подтягиваю с помощью getUser(), который равен
-~~~javascript
+
 ```react
 export const getUser = () => {
   return localStorage.getItem('usertoken');
 };
 
 ```
-~~~
 
 Далее, чтобы компонента перерисовывалась, передаю текущего юзера через onLoginSuccess в компонент AuthPage.
 Если юзер (currentUser) авторизован, то отрисовывается QuotesPage, если нет - редирект на '/'.
 
-~~~javascript
 ```react
 class App extends Component {
 
@@ -313,12 +311,11 @@ class App extends Component {
 export default App;
 
 ```
-~~~
 
 ### Авторизация, регистрация (AuthPage)
 
 Авторизация написана с помощью классовой компоненты. Имеется локальное состояние, хэндлеры изменения инпутов и хэндлеры логина и регистрации.
-~~~javascript
+
 ```react
 class AuthPage extends Component {
 
@@ -422,7 +419,6 @@ class AuthPage extends Component {
 
 export default withRouter(AuthPage);
 ```
-~~~
 
 В хэндлерах присутствуют функции, благодаря которым отправляются запросы на бэкенд.
 
@@ -468,7 +464,7 @@ export const getUser = () => {
 
 **/quotes** отправляет цитату из формы, сохраняет ее в базе данных, сразу же подгружает ее и постит сообщение снизу под формой.
 Тоже написана с помощью классовой компоненты. Имеет локальный стейт, хранящий сообщения и имя (email) текущего пользователя.
-~~~javascript
+
 ```react
 class QuotesPage extends Component {
 
@@ -547,7 +543,8 @@ class QuotesPage extends Component {
 
 export default withRouter(QuotesPage);
 ```
-~~~
+
+
 
 ## Компонент Input и QuotesList
 
@@ -555,7 +552,7 @@ export default withRouter(QuotesPage);
 
 Тут происходит написание и сохранение цитат в БД. С помощью post запроса происходит добавление нового сообщения.
 
-~~~javascript
+
 ```react
 
 class Input extends Component {
@@ -605,13 +602,11 @@ class Input extends Component {
 
 export default Input;
 ```
-~~~
 
 ### QuotesList
 
 Тут происходит отрисовка новых цитат.
 
-~~~javascript
 ```react
 import React from 'react';
 
@@ -641,4 +636,4 @@ const QuotesList = ({ messages }) => {
 
 export default QuotesList;
 ```
-~~~
+
